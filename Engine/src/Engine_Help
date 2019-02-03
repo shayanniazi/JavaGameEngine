@@ -1,0 +1,27 @@
+Way to draw meshes/objects and shit:
+  glUseProgram(shaderId);
+  glBindVertexArray(vaoId);
+  glDrawArrays(GL_TRIANGLES, 0, 3);
+  //unbinding VAO and then stopping shader program
+  glBindVertexArray(0);
+  glUseProgram(0);
+  
+  		If a non-zero named buffer object is bound to the GL_ARRAY_BUFFER target 
+        (see glBindBuffer) while a generic vertex attribute array is
+        specified, pointer is treated as a byte offset into the buffer object's data store
+  
+How to create a SHADER
+1. create shader
+2. give a shader source (make sure shader is loaded first)
+3. compile shader
+4. add the shader to the program (attatch and link program)
+5. use shader program 
+
+HOW LIGHTING WORKS
+i) ambient lighting
+works by taking a floating point variable which acts as a factor of intensity, which is then multiplied by the objects color and/or texture
+ii) directional lighting
+works by calculating the light reflection effect by taking the dot product between the objects normals and the direction of the light
+eq 1)diffuse factor = dotProduct(normals, -directionalLight.direction)
+eq 2)diffuse color = color of directional light * intensity of directional light * diffuse factor
+								return diffuse color
